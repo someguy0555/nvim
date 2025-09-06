@@ -84,7 +84,7 @@ vim.diagnostic.config({
     float = { border = "rounded", },
 })
 
-vim.lsp.enable({ 'lua_ls', 'clangd', 'omnisharp', 'hls', 'markdown_oxide' , 'pyright' })
+vim.lsp.enable({ 'lua_ls', 'markdown_oxide' })
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
