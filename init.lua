@@ -182,6 +182,14 @@ function NoInterruptions()
     vim.cmd('set cmdheight=0')
 end
 
+if vim.g.neovide then
+    vim.o.guifont = "Iosevka Nerd Font Mono:h12"
+    vim.g.neovide_cursor_vfx_mode = "wireframe"
+    vim.g.neovide_cursor_smooth_blink = true
+    vim.g.neovide_cursor_vfx_particle_lifetime = 0.25
+    vim.g.neovide_cursor_vfx_particle_highlight_lifetime = 0.1
+end
+
 -- -- local dap = require("dap")
 -- -- local dapui = require("dapui")
 -- -- dapui.setup()
