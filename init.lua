@@ -84,7 +84,7 @@ vim.diagnostic.config({
     float = { border = "rounded", },
 })
 
-vim.lsp.enable({ 'lua_ls', 'clangd', 'omnisharp', 'hls', 'markdown_oxide' , 'pyright' })
+vim.lsp.enable({ 'lua_ls', 'clangd', 'omnisharp', 'hls', 'markdown_oxide' , 'pyright', 'ts_ls' })
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -110,7 +110,6 @@ require("lazy").setup({
     install = { colorscheme = { "gruvbox" } },
     checker = { notify = false, enabled = false, },
 })
--- vim.cmd('colorscheme quiet')
 
 ---Show attached LSP clients in `[name1, name2]` format.
 ---Long server names will be modified. For example, `lua-language-server` will be shorten to `lua-ls`
