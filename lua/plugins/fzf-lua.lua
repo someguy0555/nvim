@@ -20,6 +20,8 @@ return {
                         ["enter"]  = fzf.actions.file_edit_or_qf,
                         ["ctrl-q"] = fzf.actions.file_sel_to_qf,
                         ["ctrl-Q"] = fzf.actions.file_sel_to_ll,
+                        -- ["ctrl-Q"] = fzf.actions.file_sel_to_qf,
+                        -- ["ctrl-q"] = fzf.actions.file_sel_to_ll,
                         ["ctrl-i"] = fzf.actions.toggle_ignore,
                         ["ctrl-h"] = fzf.actions.toggle_hidden,
                         ["ctrl-f"] = fzf.actions.toggle_follow,
@@ -37,10 +39,7 @@ return {
 
             -- vim.keymap.set('n', '<leader>fd', fzf.git_diff)
             vim.keymap.set('n', '<leader>fs', fzf.git_status)
-            vim.keymap.set('n', '<leader>fb', fzf.git_branches)
-
             vim.keymap.set('n', '<leader>lw', fzf.lsp_workspace_symbols)
-
             vim.keymap.set('n', '<leader>ft', fzf.colorschemes)
         end
     },
