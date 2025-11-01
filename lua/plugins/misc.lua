@@ -1,5 +1,25 @@
 return {
     -- {
+    --     'mghaight/replua.nvim',
+    --     opts = {
+    --         open_command = "botright 15split",
+    --         keymaps = {
+    --             eval_line = "<leader>rl",
+    --             eval_block = "<leader>rb", -- disable
+    --             eval_buffer = "<leader>ra",
+    --         },
+    --         intro_lines = {
+    --             "-- replua.nvim",
+    --             "-- Custom scratch buffer - happy hacking!",
+    --             "",
+    --         },
+    --         print_prefix = "-- print> ",
+    --         result_prefix = "-- => ",
+    --         newline_after_result = true,
+    --         persist_env = true,
+    --     }
+    -- },
+    -- {
     --     "folke/lazydev.nvim",
     --     ft = "lua",
     --     opts = {
