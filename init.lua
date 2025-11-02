@@ -18,7 +18,7 @@ vim.o.grepprg = "rg --vimgrep"
 vim.o.grepformat = "%f:%l:%c:%m"
 
 -- Map
-vim.keymap.set('n', '<C-c>', '<Esc>')
+vim.keymap.set({ 'n', 'v', 'x', 'i' }, '<C-c>', '<Esc>')
 vim.keymap.set('n', '<leader>o', ':update<CR>:source<CR>')
 vim.keymap.set('n', '<leader>w', ':write<CR>')
 vim.keymap.set('n', '<leader>W', ':write<CR>:quit!<CR>')
@@ -30,10 +30,10 @@ vim.keymap.set({ 'n', 'v', 'x' }, '<leader>d', '"+d')
 vim.keymap.set({ 'n', 'v', 'x' }, '<leader>p', '"+p')
 vim.keymap.set('n', '<leader><leader>', ':nohlsearch<CR>')
 vim.keymap.set('n', '<leader>di', function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end)
-vim.keymap.set('n', '<leader>cq', ':copen<CR>')
-vim.keymap.set('n', '<leader>cQ', ':lopen<CR>')
-vim.keymap.set('n', '<leader>lq', vim.diagnostic.setqflist)
-vim.keymap.set('n', '<leader>lQ', vim.diagnostic.setloclist)
+vim.keymap.set('n', '<leader>dq', vim.diagnostic.setqflist)
+vim.keymap.set('n', '<leader>dQ', vim.diagnostic.setloclist)
+vim.keymap.set('n', '<leader>lq', ':copen<CR>')
+vim.keymap.set('n', '<leader>lQ', ':lopen<CR>')
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
 vim.keymap.set("n", "<leader>ln", vim.lsp.buf.rename)
 vim.keymap.set('n', '<leader>ld', vim.lsp.buf.definition)
