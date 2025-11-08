@@ -15,7 +15,7 @@
 local util = require 'lspconfig.util'
 
 return {
-    cmd = { 'haskell-language-server-wrapper', '--lsp' },
+    cmd = { 'haskell-language-server-wrapper-2.10.0.0', '--lsp' },
     filetypes = { 'haskell', 'lhaskell' },
     root_dir = function(bufnr, on_dir)
         local fname = vim.api.nvim_buf_get_name(bufnr)
