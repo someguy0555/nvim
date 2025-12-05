@@ -1,10 +1,11 @@
+-- vim.opt.langmap:append "jkl\\;';hjkl\\;"
 vim.g.mapleader = " "
 
 vim.o.termguicolors = true
 vim.o.number = true
 vim.o.relativenumber = true
-vim.o.expandtab = true
 vim.o.tabstop = 4
+vim.o.expandtab = true
 vim.o.shiftwidth = 4
 vim.o.wrap = false
 vim.o.swapfile = false
@@ -12,7 +13,7 @@ vim.o.undofile = true
 vim.o.winborder = "rounded"
 vim.o.signcolumn = "yes"
 vim.o.incsearch = true
-vim.o.ignorecase = true
+-- vim.o.ignorecase = true
 vim.o.smartindent = true
 vim.o.grepprg = "rg --vimgrep"
 vim.o.grepformat = "%f:%l:%c:%m"
@@ -21,10 +22,10 @@ vim.o.grepformat = "%f:%l:%c:%m"
 vim.keymap.set({ 'n', 'v', 'x', 'i' }, '<C-c>', '<Esc>')
 vim.keymap.set('n', '<leader>o', ':update<CR>:source<CR>')
 vim.keymap.set('n', '<leader>w', ':write<CR>')
-vim.keymap.set('n', '<leader>W', ':write<CR>:quit!<CR>')
+vim.keymap.set('n', '<leader>W', ':writeall!<CR>')
 vim.keymap.set('n', '<leader>q', ':quit<CR>')
-vim.keymap.set('n', '<leader>Q', ':quit!<CR>')
-vim.keymap.set('n', '<C-z>', ':quit!<CR>')
+vim.keymap.set('n', '<leader>Q', ':quitall!<CR>')
+-- vim.keymap.set('n', '<C-z>', ':quit!<CR>')
 vim.keymap.set({ 'n', 'v', 'x' }, '<leader>y', '"+y')
 vim.keymap.set({ 'n', 'v', 'x' }, '<leader>d', '"+d')
 vim.keymap.set({ 'n', 'v', 'x' }, '<leader>p', '"+p')
@@ -72,12 +73,41 @@ vim.keymap.set('t', '<C-n>', '<C-\\><C-n>')
 -- vim.keymap.set('n', ';8', 'mH')
 -- vim.keymap.set('n', ';9', 'mI')
 -- vim.keymap.set('n', ';0', 'mJ')
+vim.keymap.set({ 'n', 'x', 'v', 'i' }, '<C-w>1', ':tabn 1<CR>')
+vim.keymap.set({ 'n', 'x', 'v', 'i' }, '<C-w>2', ':tabn 2<CR>')
+vim.keymap.set({ 'n', 'x', 'v', 'i' }, '<C-w>3', ':tabn 3<CR>')
+vim.keymap.set({ 'n', 'x', 'v', 'i' }, '<C-w>4', ':tabn 4<CR>')
+vim.keymap.set({ 'n', 'x', 'v', 'i' }, '<C-w>5', ':tabn 5<CR>')
+vim.keymap.set({ 'n', 'x', 'v', 'i' }, '<C-w>6', ':tabn 6<CR>')
+vim.keymap.set({ 'n', 'x', 'v', 'i' }, '<C-w>7', ':tabn 7<CR>')
+vim.keymap.set({ 'n', 'x', 'v', 'i' }, '<C-w>8', ':tabn 8<CR>')
+vim.keymap.set({ 'n', 'x', 'v', 'i' }, '<C-w>9', ':tabn 9<CR>')
+vim.keymap.set({ 'n', 'x', 'v', 'i' }, '<C-w>0', ':tabn 10<CR>')
 
 -- Remap
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { silent = true })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { silent = true })
 vim.keymap.set('v', '<', '<gv', { silent = true })
 vim.keymap.set('v', '>', '>gv', { silent = true })
+
+-- neovide
+if vim.g.neovide then
+    vim.o.guifont = "Iosevka Nerd Font Mono:h12"
+    vim.keymap.set({ 'n', 'x', 'v', 'i' }, '<C-b>1', ':tabn 1<CR>')
+    vim.keymap.set({ 'n', 'x', 'v', 'i' }, '<C-b>2', ':tabn 2<CR>')
+    vim.keymap.set({ 'n', 'x', 'v', 'i' }, '<C-b>3', ':tabn 3<CR>')
+    vim.keymap.set({ 'n', 'x', 'v', 'i' }, '<C-b>4', ':tabn 4<CR>')
+    vim.keymap.set({ 'n', 'x', 'v', 'i' }, '<C-b>5', ':tabn 5<CR>')
+    vim.keymap.set({ 'n', 'x', 'v', 'i' }, '<C-b>6', ':tabn 6<CR>')
+    vim.keymap.set({ 'n', 'x', 'v', 'i' }, '<C-b>7', ':tabn 7<CR>')
+    vim.keymap.set({ 'n', 'x', 'v', 'i' }, '<C-b>8', ':tabn 8<CR>')
+    vim.keymap.set({ 'n', 'x', 'v', 'i' }, '<C-b>9', ':tabn 9<CR>')
+    vim.keymap.set({ 'n', 'x', 'v', 'i' }, '<C-b>0', ':tabn 10<CR>')
+
+    vim.keymap.set('n', '<C-b>t', ':tabnew %<CR>')
+    vim.keymap.set('n', '<C-b>c', ':tabclose <CR>')
+end
+
 
 vim.diagnostic.config({
     virtual_text = { prefix = "●", source = "if_many", },
@@ -87,7 +117,7 @@ vim.diagnostic.config({
     float = { border = "rounded", },
 })
 
-vim.lsp.enable({ 'lua_ls', 'clangd', 'omnisharp', 'hls', 'markdown_oxide' , 'pyright', 'ts_ls' })
+vim.lsp.enable({ 'lua_ls', 'clangd', 'omnisharp', 'hls', 'pyright', 'ts_ls', 'jdtls' })
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -143,11 +173,12 @@ function _G.statusline()
         lsp_status(),
         "%=",
         " %-14(%l,%c%V%)",
-        -- "%P    ",
+        -- "%P	",
         get_cur_pos_percentage() .. '%',
-        "    ",
+        "	",
     }, "   ")
 end
+
 vim.o.statusline = "%{%v:lua._G.statusline()%}"
 
 vim.api.nvim_create_autocmd("BufEnter", {
@@ -173,12 +204,46 @@ vim.api.nvim_create_autocmd('Filetype', {
     callback = function() vim.bo.commentstring = '//%s' end,
 })
 
-vim.api.nvim_create_autocmd('BufWinLeave', {
-    command = 'mkview',
+vim.keymap.set('n', '<C-W>:', function()
+    vim.ui.input({
+        prompt = '(capture) :',
+        completion = 'command',
+    }, function(input)
+        if input == '' or input == nil then return end
+        local output = vim.api.nvim_exec2(input, { output = true }).output
+        local buf = vim.api.nvim_create_buf(false, true)
+        vim.api.nvim_buf_set_lines(buf, 0, -1, false, vim.split(output, '\n'))
+        vim.api.nvim_set_current_buf(buf)
+        -- local win = vim.api.nvim_open_win(buf, true, {
+        --	 height = vim.o.cmdwinheight,
+        --	 split = 'below',
+        --	 win = 0,
+        -- })
+    end)
+end)
+
+vim.api.nvim_command(':hi link markdownError Normal')
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    local bufnr = args.buf
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+
+    if client and client:supports_method 'textDocument/codeLens' then
+      vim.lsp.codelens.refresh()
+      vim.api.nvim_create_autocmd({ 'BufEnter', 'CursorHold', 'InsertLeave' }, {
+        buffer = bufnr,
+        callback = vim.lsp.codelens.refresh,
+      })
+    end
+  end,
 })
-vim.api.nvim_create_autocmd('BufWinEnter', {
-    command = 'silent! loadview',
-})
+-- vim.api.nvim_create_autocmd('BufWinLeave', {
+--	 command = 'mkview',
+-- })
+-- vim.api.nvim_create_autocmd('BufWinEnter', {
+--	 command = 'silent! loadview',
+-- })
 
 -- Vim folding commands
 -- ---------------------------------
@@ -189,7 +254,7 @@ vim.api.nvim_create_autocmd('BufWinEnter', {
 -- za toggle a fold at the cursor.
 -- zo opens a fold at the cursor.
 -- zO opens all folds at the cursor.
--- zc closes a fold under cursor. 
+-- zc closes a fold under cursor.
 -- zm increases the foldlevel by one.
 -- zM closes all open folds.
 -- zr decreases the foldlevel by one.
@@ -233,25 +298,25 @@ end
 -- --   type = "executable",
 -- --   command = "node",
 -- --   args = {
--- --     vim.fs.joinpath(vim.fn.stdpath("data"), "mason/share/local-lua-debugger-vscode/extension/debugAdapter.js"),
+-- --	 vim.fs.joinpath(vim.fn.stdpath("data"), "mason/share/local-lua-debugger-vscode/extension/debugAdapter.js"),
 -- --   },
 -- -- }
 -- --
 -- -- dap.configurations.lua = {
 -- --   {
--- --     name = "Launch current file debugging",
--- --     type = 'local-lua',
--- --     request = 'launch',
--- --     cwd = '${workspaceFolder}',
--- --     extensionPath = vim.fs.joinpath(vim.fn.stdpath("data"), "mason/share/local-lua-debugger-vscode/"),
--- --     program = function()
--- --       return {
--- --         lua = "lua",
--- --         file = vim.api.nvim_buf_get_name(0),
--- --       }
--- --     end,
--- --     verbose = true,
--- --     args = {},
+-- --	 name = "Launch current file debugging",
+-- --	 type = 'local-lua',
+-- --	 request = 'launch',
+-- --	 cwd = '${workspaceFolder}',
+-- --	 extensionPath = vim.fs.joinpath(vim.fn.stdpath("data"), "mason/share/local-lua-debugger-vscode/"),
+-- --	 program = function()
+-- --	   return {
+-- --		 lua = "lua",
+-- --		 file = vim.api.nvim_buf_get_name(0),
+-- --	   }
+-- --	 end,
+-- --	 verbose = true,
+-- --	 args = {},
 -- --   },
 -- -- }
 --

@@ -27,6 +27,16 @@ return {
             cabalFormattingProvider = 'cabalfmt',
             plugin = {
                 ["ghcide-type-lenses"] = { globalOn = true, },
+                -- ["eval"] = {
+                --     ["config"] = {
+                --         diff = true,
+                --         exception = false
+                --     },
+                --     globalOn = true
+                -- },
+                -- ["cabal"] = {
+                --     ["globalOn"] = true
+                -- },
             },
         },
     },

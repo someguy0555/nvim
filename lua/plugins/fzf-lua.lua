@@ -33,11 +33,11 @@ return {
             vim.keymap.set('n', '<leader>fl', fzf.files)
             vim.keymap.set('n', '<leader>fg', fzf.live_grep)
             vim.keymap.set('n', '<leader>fh', fzf.help_tags)
+            vim.keymap.set('n', '<leader>fb', fzf.buffers)
 
             vim.keymap.set('n', '<leader>fq', fzf.quickfix)
             vim.keymap.set('n', '<leader>fQ', fzf.loclist)
 
-            -- vim.keymap.set('n', '<leader>fd', fzf.git_diff)
             vim.keymap.set('n', '<leader>fs', fzf.git_status)
             vim.keymap.set('n', '<leader>lw', fzf.lsp_workspace_symbols)
             vim.keymap.set('n', '<leader>ft', fzf.colorschemes)

@@ -87,6 +87,9 @@ return {
             },
             -- hint = { enable = true },
             telemetry = { enable = false },
+            codeLens = {
+                enable = true,
+            },
         }
     }
 }
