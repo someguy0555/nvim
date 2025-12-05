@@ -1,4 +1,3 @@
--- vim.opt.langmap:append "jkl\\;';hjkl\\;"
 vim.g.mapleader = " "
 
 vim.o.termguicolors = true
@@ -245,25 +244,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 --	 command = 'silent! loadview',
 -- })
 
--- Vim folding commands
--- ---------------------------------
--- zf#j creates a fold from the cursor down # lines.
--- zf/ string creates a fold from the cursor to string .
--- zj moves the cursor to the next fold.
--- zk moves the cursor to the previous fold.
--- za toggle a fold at the cursor.
--- zo opens a fold at the cursor.
--- zO opens all folds at the cursor.
--- zc closes a fold under cursor.
--- zm increases the foldlevel by one.
--- zM closes all open folds.
--- zr decreases the foldlevel by one.
--- zR decreases the foldlevel to zero -- all folds will be open.
--- zd deletes the fold at the cursor.
--- zE deletes all folds.
--- [z move to start of open fold.
--- ]z move to end of open fold.
-
 function NoInterruptions()
     vim.cmd('set signcolumn=no')
     vim.cmd('set norelativenumber')
@@ -273,50 +253,3 @@ function NoInterruptions()
     vim.cmd('set statusline=""')
     vim.cmd('set cmdheight=0')
 end
-
--- -- local dap = require("dap")
--- -- local dapui = require("dapui")
--- -- dapui.setup()
--- --
--- -- dap.listeners.before.attach.dapui_config = function()
--- --   dapui.open()
--- -- end
--- -- dap.listeners.before.launch.dapui_config = function()
--- --   dapui.open()
--- -- end
--- -- dap.listeners.before.event_terminated.dapui_config = function()
--- --   dapui.close()
--- -- end
--- -- dap.listeners.before.event_exited.dapui_config = function()
--- --   dapui.close()
--- -- end
--- -- -- vim.keymap.set('n', '<leader>bb', require('dap').toggle_breakpoint)
--- -- vim.keymap.set('n', '<leader>bk', require('dap').continue)
--- -- vim.keymap.set('n', '<leader>bl', require('dap').run_last)
--- --
--- -- dap.adapters["local-lua"] = {
--- --   type = "executable",
--- --   command = "node",
--- --   args = {
--- --	 vim.fs.joinpath(vim.fn.stdpath("data"), "mason/share/local-lua-debugger-vscode/extension/debugAdapter.js"),
--- --   },
--- -- }
--- --
--- -- dap.configurations.lua = {
--- --   {
--- --	 name = "Launch current file debugging",
--- --	 type = 'local-lua',
--- --	 request = 'launch',
--- --	 cwd = '${workspaceFolder}',
--- --	 extensionPath = vim.fs.joinpath(vim.fn.stdpath("data"), "mason/share/local-lua-debugger-vscode/"),
--- --	 program = function()
--- --	   return {
--- --		 lua = "lua",
--- --		 file = vim.api.nvim_buf_get_name(0),
--- --	   }
--- --	 end,
--- --	 verbose = true,
--- --	 args = {},
--- --   },
--- -- }
---
