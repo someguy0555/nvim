@@ -1,4 +1,5 @@
 return {
+    { "someguy0555/snake.nvim" }
     -- {
     --     'mghaight/replua.nvim',
     --     opts = {
